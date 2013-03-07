@@ -224,7 +224,30 @@ buster.testCase('Basic API', {
     }
 
   , 'batch()': {
-        'batch() with multiple puts': function (done) {
+        'batch() with chained interface': function (done) {
+          this.openTestDatabase(function (db) {
+            db.batch()
+              .put('foo', 'afoovalue')
+              .put('bar', 'abarvalue')
+              .put('baz', 'abazvalue')
+              .write(function (err) {
+                refute(err)
+                async.forEach(
+                    ['foo', 'bar', 'baz']
+                  , function (key, callback) {
+                      db.get(key, function (err, value) {
+                        refute(err)
+                        assert.equals(value, 'a' + key + 'value')
+                        callback()
+                      })
+                    }
+                  , done
+                )
+              })
+          })
+        }
+
+      , 'batch() with multiple puts': function (done) {
           this.openTestDatabase(function (db) {
             db.batch(
                 [

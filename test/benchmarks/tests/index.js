@@ -49,14 +49,14 @@ module.exports = {
     }
 
   , 'batch(int, string) x 1000': {
-        'LevelUP'             : require('./batch_int_string_x1000_levelup')
+        'LevelUP'             : require('./batch_int_string_x1000_leveled')
       , 'LevelUP (release)'   : require('./batch_int_string_x1000_levelup')
       , 'LevelUP (no Snappy)' : require('./batch_int_string_x1000_levelup')
       , 'Leveled'             : require('./batch_int_string_x1000_leveled')
     }
 
   , 'batch(int, string) x 100,000': {
-        'LevelUP'             : require('./batch_int_string_x100000_levelup')
+        'LevelUP'             : require('./batch_int_string_x100000_leveled')
       , 'LevelUP (release)'   : require('./batch_int_string_x100000_levelup')
       , 'LevelUP (no Snappy)' : require('./batch_int_string_x100000_levelup')
       , 'Leveled'             : require('./batch_int_string_x100000_leveled')
